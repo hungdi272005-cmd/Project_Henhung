@@ -1,0 +1,17 @@
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:897:13:SPI5_Write	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:1009:6:StartDefaultTask	5
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:252:6:SystemClock_Config	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:160:5:main	2
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:741:6:IOE_Init	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:750:6:IOE_ITConfig	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:762:6:IOE_Write	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:773:9:IOE_Read	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:786:10:IOE_ReadMultiple	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:795:6:IOE_Delay	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:923:6:LCD_IO_Init	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:933:6:LCD_IO_WriteData	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:949:6:LCD_IO_WriteReg	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:968:10:LCD_IO_ReadData	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:995:6:LCD_Delay	1
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:1053:6:HAL_TIM_PeriodElapsedCallback	2
+C:/TouchGFXProjects/Tetris_New/Core/Src/main.c:1071:6:Error_Handler	1
