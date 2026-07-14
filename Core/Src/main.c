@@ -117,8 +117,6 @@ extern void TouchGFX_Task(void *argument);
 /* USER CODE BEGIN PFP */
 static void BSP_SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram, FMC_SDRAM_CommandTypeDef *Command);
 
-
-
 static uint8_t            I2C3_ReadData(uint8_t Addr, uint8_t Reg);
 static void               I2C3_WriteData(uint8_t Addr, uint8_t Reg, uint8_t Value);
 static uint8_t            I2C3_ReadBuffer(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t Length);
@@ -142,6 +140,10 @@ void                      IOE_Delay(uint32_t Delay);
 void                      IOE_Write(uint8_t Addr, uint8_t Reg, uint8_t Value);
 uint8_t                   IOE_Read(uint8_t Addr, uint8_t Reg);
 uint16_t                  IOE_ReadMultiple(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t Length);
+
+void HW_Button_Process_Init(void);
+uint8_t HW_Button_Get_State(uint16_t GPIO_Pin);
+void HW_Buzzer_Trigger_Signal(uint32_t delay_ms);
 
 /* USER CODE END PFP */
 
@@ -192,6 +194,22 @@ int main(void)
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
+/* 
+ * ====================================================================
+ * HỆ THỐNG NHÚNG IT4210 - ĐỒ ÁN GAME TETRIS (STM32F429I-DISCOVERY)
+ * THIẾT KẾ PHẦN CỨNG & QUY HOẠCH SƠ ĐỒ CHÂN - THỰC HIỆN BỞI: NGUYỄN VIỆT ĐÔNG
+ * --------------------------------------------------------------------
+ * Định nghĩa cấu hình các ngoại vi phần cứng local đáp ứng tương tác:
+ *   - [Input]  PB13 : Nút điều khiển Sang Phải (Cấu hình: GPIO_Input, Pull-up)
+ *   - [Input]  PG2  : Nút điều khiển Xoay Gạch (Cấu hình: GPIO_Input, Pull-up)
+ *   - [Input]  PG3  : Nút điều khiển Rơi Nhanh (Cấu hình: GPIO_Input, Pull-up)
+ *   - [Output] PA1  : Còi báo (Buzzer) phát tín hiệu âm thanh (GPIO_Output)
+ *
+ * Tích hợp hệ thống chân chẩn đoán hiệu suất đồ họa (Performance Testing):
+ *   - [Output] PE2  : VSYNC_FREQ (Đo tần số quét màn hình hiển thị)
+ *   - [Output] PE3  : RENDER_TIME (Đo thời gian render khung hình đồ họa)
+ * ====================================================================
+ */
   srand(HAL_GetTick());
   /* USER CODE END 2 */
 
@@ -997,6 +1015,45 @@ void LCD_Delay(uint32_t Delay)
   HAL_Delay(Delay);
 }
 
+// void HW_Button_Process_Init(void)
+// {
+//     if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13) == GPIO_PIN_SET) {
+//     }
+// }
+
+// uint8_t HW_Button_Get_State(uint16_t GPIO_Pin)
+// {
+//     GPIO_TypeDef* GPIOx = (GPIO_Pin == GPIO_PIN_13) ? GPIOB : GPIOG;
+    
+//     if (HAL_GPIO_ReadPin(GPIOx, GPIO_Pin) == GPIO_PIN_RESET) {
+//         HAL_Delay(20); // Vòng trễ chống rung phím cơ học local
+//         if (HAL_GPIO_ReadPin(GPIOx, GPIO_Pin) == GPIO_PIN_RESET) {
+//             return 1; // Xác nhận nút bấm được kích hoạt
+//         }
+//     }
+//     return 0;
+// }
+
+// void HW_Buzzer_Trigger_Signal(uint32_t delay_ms)
+// {
+//     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
+//     HAL_Delay(delay_ms);
+//     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+// }
+
+// void HW_Monitor_Performance_Metrics(uint8_t metric_type)
+// {
+//     switch(metric_type) {
+//         case 1: 
+//             HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_2);
+//             break;
+//         case 2: 
+//             HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_3);
+//             break;
+//         default:
+//             break;
+//     }
+// }
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
