@@ -70,7 +70,10 @@ void Error_Handler(void);
 #define SPI5_NCS_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
-
+#define HARDWARE_BTN_RIGHT_PIN        GPIO_PIN_13
+#define HARDWARE_BTN_RIGHT_PORT       GPIOB
+#define HARDWARE_BTN_ROTATE_PIN       GPIO_PIN_2
+#define HARDWARE_BTN_ROTATE_PORT      GPIOG
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
